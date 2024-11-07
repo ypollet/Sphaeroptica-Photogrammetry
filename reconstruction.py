@@ -199,7 +199,6 @@ def triangulate_point(proj_points : list[helpers.ProjPoint]) -> np.ndarray:
                              proj_mat[0, :] - img_point[0]*proj_mat[2, :]])
         A = np.concatenate([A, view]) if A is not None else view
         
-    print(f"A => \n{A}")
     U, s, Vh = np.linalg.svd(A, full_matrices = False)
 
     X = np.squeeze(np.asarray(Vh[-1,:]))
@@ -395,7 +394,6 @@ def intersectRays(centers, directions):
     for idx, center in enumerate(centers):
         sum_error = distancePointLine(origin, center, directions[idx])**2
 
-    print(f"Error : {sum_error}")
     return origin
     
 def distancePointLine(point, origin, direction_vector):
